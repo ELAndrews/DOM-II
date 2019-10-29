@@ -98,3 +98,11 @@ navLinks.forEach((item) => {
         console.log(`This link is currently disabled.`)
     })
 })
+
+// Stretch Challenge - GSAP
+
+
+const allImages = document.querySelectorAll('img');
+
+TweenMax.from(allImages, 5, {opacity: 0});
+
