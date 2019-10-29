@@ -61,7 +61,7 @@ window.addEventListener('scroll', () => {
 //9 mousemove
 
 window.addEventListener('mousemove', (event) => {
-    console.log(`You mouse is at the following co-ordinates: ${event.clientX}:${event.clientY}`)
+    // console.log(`You mouse is at the following co-ordinates: ${event.clientX}:${event.clientY}`)
 })
 
 //10 contextmenu
@@ -73,7 +73,28 @@ busImg.addEventListener('contextmenu', el => {
     console.log(`No menu available on this picture.`)
   });
 
-
-
 //Nest two similar events somewhere in the site and prevent the event propagation properly
+
+busImg.addEventListener("mouseover", (el) => {
+	if (busImg.style.opacity == 1) {
+  	el.target.style.opacity = 0.5;
+  } else {
+  	el.target.style.opacity = 1;
+  }
+  el.stopImmediatePropagation()
+})
+
+busImg.addEventListener('mouseover', () => {
+    console.log(`This is a pointless event as it does nothing.`)
+})
+
 //Stop the navigation from items from refreshing the page by using preventDefault()
+
+const navLinks = document.querySelectorAll('a');
+
+navLinks.forEach((item) => {
+    item.addEventListener('click', (event) => {
+        event.preventDefault()
+        console.log(`This link is currently disabled.`)
+    })
+})
